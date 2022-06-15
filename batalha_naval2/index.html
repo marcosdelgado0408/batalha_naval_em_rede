@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+    <title>Batalha naval</title>
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>     
+    
+    
+    
+    <style>
+        #procurarPartidaButton{
+            margin-left: 15%;
+        }
+        
+        
+        </style>
+
+
+</head>
+
+<body>
+    
+    <div>
+        <h1>Jogos em rede</h1>
+        <h2>Batalha naval</h2>
+    </div>
+    
+    <div id="inserirNome">
+        <div style="color: black;">
+            Nome do jogador:<span class="badge-pill"></span>
+            <input  type="text" id="playerName" size="40" required class="form-control"/>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <button type="button" id="procurarPartidaButton" class="btn btn-danger" onclick="sendPlayerName()" >Procurar partida</button>
+        </div>
+        
+    </div>
+    
+    <div id="inicioDePartida" style="visibility: hidden;">
+        <h1>Inicio de partida</h1>
+    
+    
+    
+        <h1>Seu tabuleiro</h1>
+        <h2>Adicione os navios no seu tabuleiro -> trocando os zeros por 1</h2>
+        
+        <textarea id="display" style="width: 240px;height:160px"></textarea>
+        
+        <button type="button" id="adicionarNaviosButton" class="btn btn-danger" onclick="setNavios()" >Adicionar navios</button>
+ 
+
+    </div>
+    
+    
+    
+    
+    
+    <script src="/client.js"></script>
+</body>
+</html>
