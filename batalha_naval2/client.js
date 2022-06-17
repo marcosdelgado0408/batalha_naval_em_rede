@@ -39,6 +39,7 @@ for(var i=0;i<10;i++){
 // console.log(outPut);
 
 document.getElementById("display").innerHTML = outPut;
+document.getElementById("display-adversario").innerHTML = outPut;
 
 
 function sendPlayerName(){
@@ -60,10 +61,7 @@ function sendPlayerName(){
 
 ws.addEventListener("open", () =>{
     console.log("Abriu a conexão");
-
-
-
-    
+   
 
 });
 
@@ -79,11 +77,40 @@ ws.onmessage = (event) =>{
            document.getElementById("inicioDePartida").style.visibility = 'visible';
         }
     }
+    if(json['type'] == "exibir"){
+        if(json['message'] == "tela-do-outro-jogador"){
+            document.getElementById("tabuleiroAdversario").style.visibility = 'visible';
+            document.getElementById("adicionarNaviosButton").style.visibility = 'hidden';
+        
+        
+            ws.send(JSON.stringify({
+                type: "status",
+                message: "aguardando"
+            }));
+        
+        }
+    }
+    if(json['type'] == "partida"){
+        if(json["message"] == "sua-vez"){
+            document.getElementById("adicionar-jogada-button").style.visibility = 'visible';
+            document.getElementById("facasuajogada").style.visibility = 'visible';            
+        }
+    }
+    if(json['type'] == "pontuacao"){
+        if(json['message'] == "acertou"){
+            document.getElementById("acertou").style.visibility = 'visible';
+        }
+        else{
+            document.getElementById("errou").style.visibility = 'visible';
+
+        }
+    }
+
 
 
 }
 
-function setNavios(){
+function getNaviosIniciais(){
  
     var seuTabuleiroString =  document.getElementById("display").value;
 
@@ -91,7 +118,6 @@ function setNavios(){
     var linhas = seuTabuleiroString.split("\n");
     for(var i=0;i<10;i++){
         var colunas = linhas[i].split(", ");
-        console.log(colunas);
         for(var j=0;j<10;j++){
             seuTabuleiro[i][j] = colunas[j];
         }
@@ -116,6 +142,18 @@ function setNavios(){
     }));
 
 
+}
+
+
+function getJogada(){
+
+    var tabuleiroJogadaString =  document.getElementById("display-adversario").value;
+
+
+    ws.send(JSON.stringify({
+        type: "jogada",
+        message: tabuleiroJogadaString
+    }));
 
 
 }

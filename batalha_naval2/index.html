@@ -45,20 +45,33 @@
     
     <div id="inicioDePartida" style="visibility: hidden;">
         <h1>Inicio de partida</h1>
-    
-    
+
     
         <h1>Seu tabuleiro</h1>
         <h2>Adicione os navios no seu tabuleiro -> trocando os zeros por 1</h2>
         
         <textarea id="display" style="width: 240px;height:160px"></textarea>
         
-        <button type="button" id="adicionarNaviosButton" class="btn btn-danger" onclick="setNavios()" >Adicionar navios</button>
- 
+        <button type="button" id="adicionarNaviosButton" class="btn btn-danger" onclick="getNaviosIniciais()" >Adicionar navios</button>
+     </div>
+    
+     
+     <div id="tabuleiroAdversario" style="visibility: hidden;">
+        <h2>Tabuleiro inimigo:</h2>
+        <p>Obs.: faça uma jogada por vez colocando um "1" no lugar que você acha que está o outro navio</p>
 
-    </div>
-    
-    
+        <h3 id="facasuajogada" style="visibility:hidden;">Faça sua jogada</h3>
+        <textarea id="display-adversario" style="width: 240px;height:160px"></textarea>
+        <button type="button" id="adicionar-jogada-button" class="btn btn-danger" style="visibility: hidden;" onclick="getJogada()" >fazer jogada</button>
+
+     </div>
+
+     <div>
+        <h2 id="acertou" style="visibility:hidden;">Aceeerrtooou</h2>
+        <h2 id="errou" style="visibility:hidden ;">Errrou</h2>
+     </div>
+     
+
     
     
     
